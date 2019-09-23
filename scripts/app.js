@@ -1,20 +1,38 @@
-
+// all variables 
 document.addEventListener('DOMContentLoaded', () => {
-  const width = 10 
+  const width = 10
   const grid = document.querySelector('.grid')
   const cells = []
-  let playerIdx = 90
-  let alienIdx = 5
+  let playerIdx = 99
+  const alienIdx = [0]
+  let laserIdx = null
 
-  function handleClick(e) {
-    e.target.classList.add('player')
-  }
+  // let aliens [] array methodolgy
+  // let gamePlaying = false
+  // let playerScore = 0
+  // let bulletInterval = null
+  // const bulletSpeed = 20
+  // let soundLazer = null
+  // let soundBoom = null
+  // let pilotName = 'Unknown'
+  // let highscores = null
+
+
+  //Functions
+  // function checkHighscores()
+  // function startGame ()
+  // function pilotNameInput ()
+  // function resetGame ()
+  // function quitGame ()
+  // function playGame()
+  // function sounds()
+  // function collision
+  
+
+
 
   for (let i = 0; i < width ** 2; i++) {
     const cell = document.createElement('DIV')
-
-    cell.addEventListener('click', handleClick)
-
     grid.appendChild(cell)
     cells.push(cell)
   }
@@ -26,38 +44,57 @@ document.addEventListener('DOMContentLoaded', () => {
   // use set interval and link identifier which fires from playerIdx
   // use remove and add to make laser move
   // use clear interval to stop laser when hits end of grid
-  function fireLaser(laserIdx) {
-    const laserId = setInterval(() => {
-      cells[laserIdx].classList.remove('laser')
 
+  //every time the fire laser cell moves, 
+  // update the laserIdx so that it's the number of the cell in which the laser is in currently 
+
+  // 
+
+  function fireLaser() {
+    laserIdx = playerIdx
+    const laserId = setInterval(() => {
+      
+      //make the check here whether the cells[laserIdx] contains the alien class
+      cells[laserIdx].classList.remove('laser')
       laserIdx -= width
       if (laserIdx < 0) return clearInterval(laserId)
       cells[laserIdx].classList.add('laser')
+      
+      if (cells[laserIdx].classList.contains('laser','alien')) { 
+        cells[laserIdx].classList.remove('alien') 
+        return clearInterval()
+      }      
     }, 100)
   }
+  
 
+  // // create alien
+  // cells[alienIdx].classList.add('aliens')
+  cells[alienIdx[0]].classList.add('alien')
+  // // alien move 
+  let alienId = null 
+  console.log(laserIdx)
 
+  function alienMove() {
+    
+    alienId = setInterval(() => {
+      if (alienIdx[0] > 89 || cells[alienIdx[0]].classList.value !== 'alien') {
+        console.log(alienIdx[0], laserIdx)
+        cells[alienIdx[0]].classList.remove('alien')
+        clearInterval(alienId)
+      } else {
+        cells[alienIdx[0]].classList.remove('alien')
+        if (alienIdx[0] % width < width) {
+          alienIdx[0]++
+          cells[alienIdx[0]].classList.add('alien')
+          console.log(laserIdx)
 
-
-  // create alien
-  cells[alienIdx].classList.add('alien')
-
-
-
-
-
-  // alien move 
-
-  function alienMove(alienIdx) {
-    const alienId = setInterval(() => {
-      cells[alienIdx].classList.remove('alien') 
-      if (alienIdx % width < width) {
-        alienIdx++
-        cells[alienIdx].classList.add('alien')
-      }
+        }  
+      }          
     }, 1000)
   }
-  alienMove(alienIdx)
+
+  alienMove()
 
 
   cells[playerIdx].classList.add('player')
@@ -66,7 +103,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
     cells[playerIdx].classList.remove('player')
     const x = playerIdx % width
-    const y = Math.floor(playerIdx / width)
 
     switch (e.keyCode) {
       case 37: if (x > 0) playerIdx -= 1
@@ -82,5 +118,4 @@ document.addEventListener('DOMContentLoaded', () => {
 
     cells[playerIdx].classList.add('player')
   })
-  
 })
