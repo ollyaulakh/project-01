@@ -7,7 +7,11 @@ body {
   display: flex;
   height: 100vh;
   justify-content: center;
-  margin: 0;
+  margin: 100px;
+}
+
+.content {
+  display: flex;
 }
 
 .grid {
@@ -23,32 +27,38 @@ body {
 }
 
 .grid div {
-  border: 1px solid;
+  /* border: 1px solid; */
   flex-grow: 1;
   height: 10%;
   width: 10%;
 }
 
 .player {
-  background-image: url(../assets/sprite-sheet.png);
-  background-size: 300px;
-  background-position-x: 0;
-  background-position-y: 0;
+  background-image: url(/Users/aulakh/Development/project-01/assets/Rocket.png);
+  background-size: 60px;
+  background-position: center;
+  /* background-position-x: 0;
+  background-position-y: 0; */
 }
 
 .laser {
-  background-color: red;
-  background-size: 300px;
-  background-position-x: 0;
-  background-position-y: 0;
+  background-image: url(/Users/aulakh/Development/project-01/assets/lazer.png);
+  background-size: 60px;
+  background-position: center;
+  /* background-position-x: 0;
+  background-position-y: 0; */
 }
 
 .alien {
-  background-color: greenyellow;
-  background-size: 300px;
-  background-position-x: 0;
-  background-position-y: 0;
+  background-image:url(/Users/aulakh/Development/project-01/assets/alien.png);
+  background-size: 60px;
+  background-position: center;
+  /* background-position-x: 0;
+  background-position-y: 0; */
 }
+
+
+
 
 /* .grid div.player[data-direction="forward"] {
   transform: scaleX(1)

@@ -4,10 +4,11 @@ document.addEventListener('DOMContentLoaded', () => {
   const grid = document.querySelector('.grid')
   const cells = []
   let playerIdx = 99
-  const alienIdx = [0]
-  let laserIdx = null
+  const alienIdx = [ 0, 2 ,4, 6, 8, 11, 13, 15, 17, 19 ]
+  let laserIdx = null 
+  let laserFired = false
 
-  // let aliens [] array methodolgy
+
   // let gamePlaying = false
   // let playerScore = 0
   // let bulletInterval = null
@@ -29,7 +30,7 @@ document.addEventListener('DOMContentLoaded', () => {
   // function collision
   
 
-
+  // grid
 
   for (let i = 0; i < width ** 2; i++) {
     const cell = document.createElement('DIV')
@@ -51,26 +52,47 @@ document.addEventListener('DOMContentLoaded', () => {
   // 
 
   function fireLaser() {
+    if (laserFired) return
+    laserFired = true
     laserIdx = playerIdx
     const laserId = setInterval(() => {
-      
       //make the check here whether the cells[laserIdx] contains the alien class
       cells[laserIdx].classList.remove('laser')
       laserIdx -= width
-      if (laserIdx < 0) return clearInterval(laserId)
-      cells[laserIdx].classList.add('laser')
+      if (laserIdx < 0) {
+        laserFired = false
+        return clearInterval(laserId)
+      } else {
+        cells[laserIdx].classList.add('laser')
+      }
       
-      if (cells[laserIdx].classList.contains('laser','alien')) { 
-        cells[laserIdx].classList.remove('alien') 
-        return clearInterval()
+      if (cells[laserIdx].classList.contains('alien')) { 
+        cells[laserIdx].classList.remove('alien', 'laser')
+        laserFired = false
+        return clearInterval(laserId) 
       }      
-    }, 100)
+    }, 70)
+    
   }
-  
+
+  // function collisionCheck() {
+  //   if (cells[laserIdx].classList.contains('laser', 'alien')) {
+  //     console.log(`Hit On ${alienIdx}`)
+  //     cells[laserIdx].classList.remove('alien')
+  //     return clearInterval()
+  //   }
+  // }
 
   // // create alien
-  // cells[alienIdx].classList.add('aliens')
-  cells[alienIdx[0]].classList.add('alien')
+
+  function createAliens() {
+    for (var i = 0; i  < alienIdx.length ; i++) {
+      cells[alienIdx[i]].classList.add('alien')
+    }
+  }
+  createAliens() 
+  
+
   // // alien move 
   let alienId = null 
   console.log(laserIdx)
@@ -78,24 +100,27 @@ document.addEventListener('DOMContentLoaded', () => {
   function alienMove() {
     
     alienId = setInterval(() => {
-      if (alienIdx[0] > 89 || cells[alienIdx[0]].classList.value !== 'alien') {
-        console.log(alienIdx[0], laserIdx)
-        cells[alienIdx[0]].classList.remove('alien')
-        clearInterval(alienId)
-      } else {
-        cells[alienIdx[0]].classList.remove('alien')
-        if (alienIdx[0] % width < width) {
-          alienIdx[0]++
-          cells[alienIdx[0]].classList.add('alien')
-          console.log(laserIdx)
-
-        }  
-      }          
+      for (var i = 0; i < alienIdx.length; i++) {
+      
+        if (alienIdx[i] > 89 || cells[alienIdx[i]].classList.value !== 'alien') {
+          console.log(alienIdx[i], laserIdx)
+          cells[alienIdx[i]].classList.remove('alien')
+          if (alienIdx[i] > 89) clearInterval(alienId)
+        } else {
+          cells[alienIdx[i]].classList.remove('alien')
+          if (alienIdx[i] % width < width) {
+            alienIdx[i]++
+            cells[alienIdx[i]].classList.add('alien')
+            console.log(laserIdx)
+          }  
+        } 
+      }         
     }, 1000)
+    
   }
 
-  alienMove()
 
+  alienMove()
 
   cells[playerIdx].classList.add('player')
 
