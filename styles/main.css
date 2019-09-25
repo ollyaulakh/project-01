@@ -12,11 +12,12 @@ body {
 
 .content {
   display: flex;
+  justify-content: center;
 }
 
 .grid {
   align-items: center;
-  box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2);
+  border: 5px black solid;
   display: flex;
   flex-grow: 1;
   flex-wrap: wrap;
@@ -57,8 +58,105 @@ body {
   background-position-y: 0; */
 }
 
+div.wrapper {
+
+	display: flex;
+	width: 600px;
+	height: 600px;
+	justify-content: center;
+	align-items: center;
+	flex-wrap: wrap;
+}
+
+div.content { 
+
+	display: flex;
+	border: 5px black solid;
+	width: 600px;
+	height: 600px;
+	justify-content: center;
+	align-items: center;
+	flex-wrap: wrap;
+  margin-right: 100px;
+  flex-direction: row;
+
+}
+
+body > div.wrapper > div > div.Logo{ 
+
+	display: flex;
+	width: 500px;
+	height: 150px;
+	justify-content: center;
+	align-items: center;
+  margin: 10px;
+}
 
 
+body > div.wrapper > div > div.Scores { 
+
+	display: flex;
+	/* border: 5px black solid; */
+	width: 500px;
+	height: 150px;
+	justify-content: center;
+	align-items: center;
+	margin: 10px;
+
+}
+
+body > div.wrapper > div > div.Buttons { 
+
+	display: flex;
+	/* border: 5px black solid; */
+	width: 500px;
+	height: 150px;
+	justify-content: center;
+	align-items: center;
+	margin: 10px;
+}
+
+body > div.wrapper > div > div.Scores > div.Score1 {
+  display: flex;
+	border: 5px black solid;
+	width: 250px;
+	height: 100px;
+	justify-content: center;
+	align-items: center;
+	margin: 10px;
+
+}
+
+body > div.wrapper > div > div.Scores > div.Score2 {
+  display: flex;
+	border: 5px black solid;
+	width: 250px;
+	height: 100px;
+	justify-content: center;
+	align-items: center;
+  margin: 10px;
+}
+
+body > div.wrapper > div > div.Buttons > div.START {
+  display: flex;
+	border: 5px black solid;
+	width: 250px;
+	height: 100px;
+	justify-content: center;
+	align-items: center;
+  margin: 10px;
+
+}
+
+body > div.wrapper > div > div.Buttons > div.RESET {
+  display: flex;
+	border: 5px black solid;
+	width: 250px;
+	height: 100px;
+	justify-content: center;
+	align-items: center;
+  margin: 10px;
+}
 
 /* .grid div.player[data-direction="forward"] {
   transform: scaleX(1)
