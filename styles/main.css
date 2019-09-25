@@ -2,12 +2,17 @@
   box-sizing: border-box;
 }
 
+@font-face {
+  font-family: 'space_invaders';
+  src: url('../assets/space-invaders/space_invader.woff') format('woff');
+}
+
 body {
   align-items: center;
   display: flex;
   height: 100vh;
   justify-content: center;
-  margin: 100px;
+  /* margin: 100px; */
 }
 
 .content {
@@ -79,6 +84,7 @@ div.content {
 	flex-wrap: wrap;
   margin-right: 100px;
   flex-direction: row;
+  /* font-family: 'space_invaders'; */
 
 }
 
@@ -101,7 +107,7 @@ body > div.wrapper > div > div.Scores {
 	height: 150px;
 	justify-content: center;
 	align-items: center;
-	margin: 10px;
+  margin: 10px;
 
 }
 
@@ -113,7 +119,8 @@ body > div.wrapper > div > div.Buttons {
 	height: 150px;
 	justify-content: center;
 	align-items: center;
-	margin: 10px;
+  margin: 10px;
+  font-family: 'space_invaders';
 }
 
 body > div.wrapper > div > div.Scores > div.Score1 {
@@ -123,7 +130,9 @@ body > div.wrapper > div > div.Scores > div.Score1 {
 	height: 100px;
 	justify-content: center;
 	align-items: center;
-	margin: 10px;
+  margin: 10px;
+  font-family: 'space_invaders';
+  font-size: 50px;
 
 }
 
@@ -135,6 +144,9 @@ body > div.wrapper > div > div.Scores > div.Score2 {
 	justify-content: center;
 	align-items: center;
   margin: 10px;
+  font-family: 'space_invaders';
+  font-size: 50px;
+ 
 }
 
 body > div.wrapper > div > div.Buttons > div.START {
@@ -145,6 +157,7 @@ body > div.wrapper > div > div.Buttons > div.START {
 	justify-content: center;
 	align-items: center;
   margin: 10px;
+  font-family: 'space_invaders';
 
 }
 
@@ -156,8 +169,22 @@ body > div.wrapper > div > div.Buttons > div.RESET {
 	justify-content: center;
 	align-items: center;
   margin: 10px;
+  font-family: 'space_invaders';
 }
 
+body > div.wrapper > div > div.Buttons > div.START > button {
+  -webkit-appearance: none;
+  font-family: 'space_invaders';
+  font-size: 50px;
+  border: none;
+}
+
+body > div.wrapper > div > div.Buttons > div.RESET > button {
+  -webkit-appearance: none;
+  font-family: 'space_invaders';
+  font-size: 50px;
+  border: none;
+}
 /* .grid div.player[data-direction="forward"] {
   transform: scaleX(1)
 }

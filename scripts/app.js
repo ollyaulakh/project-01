@@ -4,30 +4,16 @@ document.addEventListener('DOMContentLoaded', () => {
   const grid = document.querySelector('.grid')
   const cells = []
   let playerIdx = 99
-  const alienIdx = [ 0, 2 ,4, 6, 8, 11, 13, 15, 17, 19 ]
+  const alienIdx = [ 0, 2 ,4, 6, 8,11, 13, 15, 17, 19]
   let laserIdx = null 
-  let laserFired = false
+  let laserFired = false 
 
-
-  // let gamePlaying = false
-  // let playerScore = 0
-  // let bulletInterval = null
-  // const bulletSpeed = 20
   // let soundLazer = null
-  // let soundBoom = null
-  // let pilotName = 'Unknown'
-  // let highscores = null
+  // let soundKill = null
+  
 
-
-  //Functions
-  // function checkHighscores()
-  // function startGame ()
-  // function pilotNameInput ()
-  // function resetGame ()
-  // function quitGame ()
-  // function playGame()
   // function sounds()
-  // function collision
+ 
   
 
   // grid
@@ -39,17 +25,7 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
 
-  // laserbeam fire 
-
-  // create function  for firing laser with identifier
-  // use set interval and link identifier which fires from playerIdx
-  // use remove and add to make laser move
-  // use clear interval to stop laser when hits end of grid
-
-  //every time the fire laser cell moves, 
-  // update the laserIdx so that it's the number of the cell in which the laser is in currently 
-
-  // 
+  // Laserbeam fire function invoked by Spacebar
 
   function fireLaser() {
     if (laserFired) return
@@ -68,20 +44,18 @@ document.addEventListener('DOMContentLoaded', () => {
       
       if (cells[laserIdx].classList.contains('alien')) { 
         cells[laserIdx].classList.remove('alien', 'laser')
+        const score = document.querySelector('div.Score2')
+        score.textContent = 0
+        const newScore = parseInt(score.textContent)
+        score.textContent = ((newScore + laserIdx ) + laserIdx)
         laserFired = false
         return clearInterval(laserId) 
-      }      
-    }, 70)
+      }   
+
+    }, 90)
     
   }
 
-  // function collisionCheck() {
-  //   if (cells[laserIdx].classList.contains('laser', 'alien')) {
-  //     console.log(`Hit On ${alienIdx}`)
-  //     cells[laserIdx].classList.remove('alien')
-  //     return clearInterval()
-  //   }
-  // }
 
   // // create alien
 
@@ -90,8 +64,9 @@ document.addEventListener('DOMContentLoaded', () => {
       cells[alienIdx[i]].classList.add('alien')
     }
   }
-  createAliens() 
-  
+
+  // createAliens() 
+
 
   // // alien move 
   let alienId = null 
@@ -118,9 +93,12 @@ document.addEventListener('DOMContentLoaded', () => {
     }, 1000)
     
   }
+  // alienMove()
 
+  
 
-  alienMove()
+ 
+  // KEY EVENTS
 
   cells[playerIdx].classList.add('player')
 
@@ -136,11 +114,29 @@ document.addEventListener('DOMContentLoaded', () => {
       //   break
       case 39: if (x < width - 1) playerIdx += 1
         break
-      // case 40: if (y < width - 1) playerIdx += width
+      // case 27: createAliens()
       //   break
       case 32: fireLaser(playerIdx)
+        break
     }
 
     cells[playerIdx].classList.add('player')
+  })
+
+  // START GAME
+
+  const start = document.querySelector('.START button')
+  start.addEventListener('click', () => {
+    createAliens()
+    alienMove()
+    start.disabled = true
+  })
+
+
+  // RESET GAME
+
+  const reset = document.querySelector('.RESET')
+  reset.addEventListener('click', () => {
+    location.reload()
   })
 })
