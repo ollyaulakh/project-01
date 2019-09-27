@@ -12,7 +12,7 @@ body {
   display: flex;
   height: 100vh;
   justify-content: center;
-  /* margin: 100px; */
+  background-image: url("/Users/aulakh/Development/project-01/assets/background4.png");
 }
 
 .content {
@@ -22,7 +22,7 @@ body {
 
 .grid {
   align-items: center;
-  border: 5px black solid;
+  /* border: 1px chartreuse solid;  */
   display: flex;
   flex-grow: 1;
   flex-wrap: wrap;
@@ -40,15 +40,15 @@ body {
 }
 
 .player {
-  background-image: url(/Users/aulakh/Development/project-01/assets/Rocket.png);
-  background-size: 60px;
+  background-image: url(/Users/aulakh/Development/project-01/assets/Ship.png);
+  background-size: 80px;
   background-position: center;
   /* background-position-x: 0;
   background-position-y: 0; */
 }
 
 .laser {
-  background-image: url(/Users/aulakh/Development/project-01/assets/lazer.png);
+  background-image: url(/Users/aulakh/Development/project-01/assets/lazer2.png);
   background-size: 60px;
   background-position: center;
   /* background-position-x: 0;
@@ -56,8 +56,8 @@ body {
 }
 
 .alien {
-  background-image:url(/Users/aulakh/Development/project-01/assets/alien.png);
-  background-size: 60px;
+  background-image:url(/Users/aulakh/Development/project-01/assets/Alien2.png);
+  background-size: 70px;
   background-position: center;
   /* background-position-x: 0;
   background-position-y: 0; */
@@ -84,25 +84,25 @@ div.content {
 	flex-wrap: wrap;
   margin-right: 100px;
   flex-direction: row;
-  /* font-family: 'space_invaders'; */
-
 }
 
 body > div.wrapper > div > div.Logo{ 
 
 	display: flex;
 	width: 500px;
-	height: 150px;
+	height: 200px;
 	justify-content: center;
 	align-items: center;
   margin: 10px;
+  border: 5px yellow  solid; 
+  background-color: black;
 }
 
 
 body > div.wrapper > div > div.Scores { 
 
 	display: flex;
-	/* border: 5px black solid; */
+	/* border: 5px chartreuse solid; */
 	width: 500px;
 	height: 150px;
 	justify-content: center;
@@ -125,7 +125,7 @@ body > div.wrapper > div > div.Buttons {
 
 body > div.wrapper > div > div.Scores > div.Score1 {
   display: flex;
-	border: 5px black solid;
+	border: 5px yellow  solid;
 	width: 250px;
 	height: 100px;
 	justify-content: center;
@@ -133,12 +133,14 @@ body > div.wrapper > div > div.Scores > div.Score1 {
   margin: 10px;
   font-family: 'space_invaders';
   font-size: 50px;
+  color: chartreuse;
+  background-color: black;
 
 }
 
 body > div.wrapper > div > div.Scores > div.Score2 {
   display: flex;
-	border: 5px black solid;
+	border: 5px yellow solid;
 	width: 250px;
 	height: 100px;
 	justify-content: center;
@@ -146,30 +148,34 @@ body > div.wrapper > div > div.Scores > div.Score2 {
   margin: 10px;
   font-family: 'space_invaders';
   font-size: 50px;
- 
+  color: chartreuse;
+  background-color: black;
 }
 
 body > div.wrapper > div > div.Buttons > div.START {
   display: flex;
-	border: 5px black solid;
+	border: 5px yellow  solid;
 	width: 250px;
 	height: 100px;
 	justify-content: center;
 	align-items: center;
   margin: 10px;
   font-family: 'space_invaders';
+  color: chartreuse;
+  background-color: black;
 
 }
 
 body > div.wrapper > div > div.Buttons > div.RESET {
   display: flex;
-	border: 5px black solid;
+	border: 5px yellow  solid;
 	width: 250px;
 	height: 100px;
 	justify-content: center;
 	align-items: center;
   margin: 10px;
   font-family: 'space_invaders';
+  background-color: black;
 }
 
 body > div.wrapper > div > div.Buttons > div.START > button {
@@ -177,6 +183,8 @@ body > div.wrapper > div > div.Buttons > div.START > button {
   font-family: 'space_invaders';
   font-size: 50px;
   border: none;
+  color: chartreuse;
+  background-color: black;
 }
 
 body > div.wrapper > div > div.Buttons > div.RESET > button {
@@ -184,7 +192,33 @@ body > div.wrapper > div > div.Buttons > div.RESET > button {
   font-family: 'space_invaders';
   font-size: 50px;
   border: none;
+  color: chartreuse;
+  background-color: black;
 }
+
+h2 {
+  font-family: 'space_invaders';
+  font-size: 50px;
+  border: none;
+  color: chartreuse;
+  justify-content: center;
+	align-items: center;
+}
+
+.message {
+  display: none;
+  color: chartreuse;
+  font-family: 'space_invaders';
+  font-size: 50px;
+}
+
+.message2 {
+  display: none;
+  color: chartreuse;
+  font-family: 'space_invaders';
+  font-size: 50px;
+}
+
 /* .grid div.player[data-direction="forward"] {
   transform: scaleX(1)
 }

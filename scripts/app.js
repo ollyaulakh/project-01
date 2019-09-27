@@ -2,19 +2,24 @@
 document.addEventListener('DOMContentLoaded', () => {
   const width = 10
   const grid = document.querySelector('.grid')
+  const score = document.querySelector('div.Score2')
+  const score1 = document.querySelector('div.Score1')
+
+
   const cells = []
-  let playerIdx = 99
-  const alienIdx = [ 0, 2 ,4, 6, 8,11, 13, 15, 17, 19]
+  let playerIdx = 94
+  const alienIdx = [ 0, 2 ,4, 6, 8, 11, 13, 15, 17, 19, 20, 22, 24, 26, 28]
   let laserIdx = null 
   let laserFired = false 
-
-  // let soundLazer = null
-  // let soundKill = null
+  let scoreNumber = 0
   
 
-  // function sounds()
+  const soundLaser = document.querySelector('.laser')
+  const soundKill = document.querySelector('.kill')
+  const soundAlien = document.querySelector('.alienmove')
+  // const soundSong = document.querySelector('.song')
+
  
-  
 
   // grid
 
@@ -30,9 +35,9 @@ document.addEventListener('DOMContentLoaded', () => {
   function fireLaser() {
     if (laserFired) return
     laserFired = true
+    soundLaser.play()
     laserIdx = playerIdx
     const laserId = setInterval(() => {
-      //make the check here whether the cells[laserIdx] contains the alien class
       cells[laserIdx].classList.remove('laser')
       laserIdx -= width
       if (laserIdx < 0) {
@@ -44,16 +49,19 @@ document.addEventListener('DOMContentLoaded', () => {
       
       if (cells[laserIdx].classList.contains('alien')) { 
         cells[laserIdx].classList.remove('alien', 'laser')
-        const score = document.querySelector('div.Score2')
-        score.textContent = 0
-        const newScore = parseInt(score.textContent)
-        score.textContent = ((newScore + laserIdx ) + laserIdx)
+        soundKill.play()
+        
+        // SCORE
+        score.textContent = scoreNumber
+        scoreNumber = scoreNumber + 50
+        
+        score.textContent = scoreNumber
         laserFired = false
+        checkForWin()
         return clearInterval(laserId) 
       }   
 
-    }, 90)
-    
+    }, 90) 
   }
 
 
@@ -65,12 +73,10 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   }
 
-  // createAliens() 
-
 
   // // alien move 
   let alienId = null 
-  console.log(laserIdx)
+  // console.log(laserIdx)
 
   function alienMove() {
     
@@ -78,25 +84,25 @@ document.addEventListener('DOMContentLoaded', () => {
       for (var i = 0; i < alienIdx.length; i++) {
       
         if (alienIdx[i] > 89 || cells[alienIdx[i]].classList.value !== 'alien') {
-          console.log(alienIdx[i], laserIdx)
           cells[alienIdx[i]].classList.remove('alien')
-          if (alienIdx[i] > 89) clearInterval(alienId)
+          soundAlien.play()
+          // loseGame()
+          if (alienIdx[i] > 89) {
+            loseGame() 
+            clearInterval(alienId) 
+          }
         } else {
           cells[alienIdx[i]].classList.remove('alien')
           if (alienIdx[i] % width < width) {
             alienIdx[i]++
             cells[alienIdx[i]].classList.add('alien')
-            console.log(laserIdx)
           }  
         } 
+       
       }         
     }, 1000)
     
   }
-  // alienMove()
-
-  
-
  
   // KEY EVENTS
 
@@ -117,6 +123,7 @@ document.addEventListener('DOMContentLoaded', () => {
       // case 27: createAliens()
       //   break
       case 32: fireLaser(playerIdx)
+        
         break
     }
 
@@ -139,4 +146,26 @@ document.addEventListener('DOMContentLoaded', () => {
   reset.addEventListener('click', () => {
     location.reload()
   })
+
+  // WIN CONDITIONS
+
+  function checkForWin() {
+    console.log(!cells.every(cell => !cell.classList.contains('alien')))
+    console.log(scoreNumber < 700)
+    if (!cells.every(cell => !cell.classList.contains('alien')) && scoreNumber < 700) return 
+    grid.style.display = 'none'
+    score.style.display = 'none'
+    score1.style.display = 'none'
+    document.querySelector('.message').style.display = 'block'
+    // clearInterval(alienId)
+  }
+  // checkForWin()
+  
+
+  function loseGame() {
+    grid.style.display = 'none'
+    score.style.display = 'none'
+    score1.style.display = 'none'
+    document.querySelector('.message2').style.display = 'block'
+  }
 })
