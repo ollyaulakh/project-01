@@ -12,7 +12,7 @@ body {
   display: flex;
   height: 100vh;
   justify-content: center;
-  background-image: url("assets/background4.png");
+  background-image: url("../assets/background4.png");
 }
 
 .content {
@@ -40,7 +40,7 @@ body {
 }
 
 .player {
-  background-image: url("assets/Ship.png");
+  background-image: url("../assets/Ship.png");
   background-size: 80px;
   background-position: center;
   /* background-position-x: 0;
@@ -48,7 +48,7 @@ body {
 }
 
 .laser {
-  background-image: url("assets/lazer2.png");
+  background-image: url("../assets/lazer2.png");
   background-size: 60px;
   background-position: center;
   /* background-position-x: 0;
@@ -56,7 +56,7 @@ body {
 }
 
 .alien {
-  background-image:url("assets/Alien2.png");
+  background-image:url("../assets/Alien2.png");
   background-size: 70px;
   background-position: center;
   /* background-position-x: 0;
